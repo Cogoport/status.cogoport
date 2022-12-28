@@ -3,7 +3,7 @@ name: Scheduled Health Check
 # Controls when the action will run.
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/5 * * * *"
 
 env:
   TEAMS_WEBHOOK_RUL: ${{ secrets.TEAMS_WEBHOOK_RUL }}

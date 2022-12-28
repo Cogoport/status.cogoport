@@ -36,11 +36,9 @@ do
     time_total=$(echo $response | cut -d ' ' -f 2)
     echo "    $http_code $time_total"
     if [ "$http_code" -eq 200 ] || [ "$http_code" -eq 202 ] || [ "$http_code" -eq 301 ] || [ "$http_code" -eq 302 ] || [ "$http_code" -eq 307 ]; then
-      result="success"
-      curl -H 'Content-Type: application/json' -d '{"text": '"\"Test - ${key} service is down\""'}' $TEAMS_WEBHOOK_RUL
+      result="success"    
     else
       result="failed"
-      curl -H 'Content-Type: application/json' -d '{"text": '"\"Test - ${key} service is down\""'}' $TEAMS_WEBHOOK_RUL
     fi
     if [ "$result" = "success" ]; then
       break
@@ -48,6 +46,13 @@ do
     sleep 5
   done
   dateTime=$(date +'%Y-%m-%d %H:%M')
+  
+  # Notify on teams channel
+  if [ "$result" = "success" ]; then
+    response=$(curl -H 'Content-Type: application/json' -d '{"text": '"\"Test - ${key} service is down\""'}' $TEAMS_WEBHOOK_RUL)
+  fi
+
+ # Commit to repository
   if [[ $commit == true ]]
   then
     echo $dateTime, $result, $time_total >> "public/status/${key}_report.log"
