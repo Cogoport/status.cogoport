@@ -18,4 +18,4 @@ jobs:
         id: shell_script_run
         env:
           TEAMS_WEBHOOK_RUL: ${{ secrets.TEAMS_WEBHOOK_RUL }}
-        run: bash ./scripts/health-check.sh
+        run: $TEAMS_WEBHOOK_RUL ./scripts/health-check.sh
