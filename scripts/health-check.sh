@@ -51,7 +51,7 @@ do
   if [ "$result" = "success" ]
   then
     echo '{"text": '"\"Test - ${key} service is down\""'}'
-    curl -H 'Content-Type: application/json' -d '{"text": '"\"Test - ${key} service is down\""'}' $TEAMS_WEBHOOK_RUL
+    curl -H 'Content-Type: application/json' -d '{"text": '"\"Test - ${key} service is down\""'}' $TEAMS_WEBHOOK_RUL &> /dev/null
   fi
 
  # Commit to repository
