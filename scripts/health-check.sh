@@ -48,8 +48,9 @@ do
   dateTime=$(date +'%Y-%m-%d %H:%M')
   
   # Notify on teams channel
-  if [ "$result" = "success" ]; then
-    response=$(curl -H 'Content-Type: application/json' -d '{"text": '"\"Test - ${key} service is down\""'}' $TEAMS_WEBHOOK_RUL)
+  if [ "$result" = "success" ]
+  then
+    curl -H 'Content-Type: application/json' -d '{"text": '"\"Test - ${key} service is down\""'}' $TEAMS_WEBHOOK_RUL
   fi
 
  # Commit to repository
