@@ -50,7 +50,6 @@ do
   # Notify on teams channel
   if [ "$result" = "success" ]
   then
-    echo $TEAMS_WEBHOOK_RUL
     echo '{"text": '"\"Test - ${key} service is down\""'}'
     curl -H 'Content-Type: application/json' -d '{"text": '"\"Test - ${key} service is down\""'}' $TEAMS_WEBHOOK_RUL
   fi
