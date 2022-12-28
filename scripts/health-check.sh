@@ -37,8 +37,10 @@ do
     echo "    $http_code $time_total"
     if [ "$http_code" -eq 200 ] || [ "$http_code" -eq 202 ] || [ "$http_code" -eq 301 ] || [ "$http_code" -eq 302 ] || [ "$http_code" -eq 307 ]; then
       result="success"
+      curl -H 'Content-Type: application/json' -d '{"text": '"\"Test - ${key} service is down\""'}' $TEAMS_WEBHOOK_RUL
     else
       result="failed"
+      curl -H 'Content-Type: application/json' -d '{"text": '"\"Test - ${key} service is down\""'}' $TEAMS_WEBHOOK_RUL
     fi
     if [ "$result" = "success" ]; then
       break
