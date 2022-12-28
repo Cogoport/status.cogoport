@@ -50,7 +50,7 @@ do
   # Notify on teams channel
   if [ "$result" = "success" ]
   then
-    curl -H 'Content-Type: application/json' -d '{"text": '"\"Test - ${key} service is down\""'}'  "${$TEAMS_WEBHOOK_RUL}" &> /dev/null
+    curl -H 'Content-Type: application/json' -d '{"text": '"\"Test - ${key} service is down\""'}' $TEAMS_WEBHOOK_RUL &> /dev/null
   fi
 
  # Commit to repository
