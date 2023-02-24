@@ -65,7 +65,7 @@ function useSystemStatus() {
 }
 
 async function logs(key: string): Promise<ServiceStatus> {
-    const response = await fetch(`https://raw.githubusercontent.com/Cogoport/status.cogoport/cogo-status/public/status/${key}_report.log?token=GHSAT0AAAAAAB7CKUT2TLCQSA2MY4XT4SWEY7YUXJA`);
+    const response = await fetch(`https://raw.githubusercontent.com/Cogoport/status.cogoport/cogo-status/public/status/${key}_report.log`);
     const text = await response.text();
     const lines = text.split("\n");
     try {
