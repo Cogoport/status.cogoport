@@ -46,7 +46,7 @@ function useServices() {
 }
 
 async function logs(key: string): Promise<LogDaySummary[]> {
-    const response = await fetch(`https://raw.githubusercontent.com/Cogoport/status.cogoport/cogo-status/public/status/${key}_report.log`);
+    const response = await fetch(`https://raw.githubusercontent.com/Cogoport/status.cogoport/cogo-status/public/status/${key}_report.log?token=GHSAT0AAAAAAB7CKUT2SCPQIEWK75E6U25UY7YRSMQ`);
 
     const text = await response.text();
     const lines = text.split("\n");
