@@ -14,6 +14,8 @@ jobs:
     name: Check all sites
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: my-branch
       - name: Run Shell Script
         id: shell_script_run
         env:
