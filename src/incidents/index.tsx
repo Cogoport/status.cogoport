@@ -13,7 +13,7 @@ const IncidentsSection: NextPage = () => {
     }
 
     return (
-        <div className='mt-5'>
+        <div className='mt-5 pb-96'>
             {
                 isIncidentsLoading ? (
                     <p>Loading...</p>

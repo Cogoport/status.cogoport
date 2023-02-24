@@ -37,12 +37,27 @@ const ServiceItem: FunctionComponent<ServiceItemProps> = ({ item }) => {
         return Math.round((successCount * 100) / 90);
     }
 
+    const getName=(name:string)=>{
+        switch (name) {
+            case "backend_service":
+                return "Backend Service"
+            case "frontend_admin":
+                return "Frontend Admin"
+            case "frontend_partner":
+                return "Frontend Partner"
+            case "frontend_app":
+                return "Frontend App"
+            default:
+                return ""
+        }
+    }
+
     return (
         <div className='mb-10'>
             <div className='flex'>
                 <Icon />
                 <div className="w-full flex justify-between items-baseline">
-                    <p className="ml-4 text-base font-semibold leading-6 text-gray-900">{item.name}</p>
+                    <p className="ml-4 text-base font-semibold leading-6 text-gray-900">{getName(item.name)}</p>
                     <p className='text-xs text-gray-400 items-baseline	self-baseline'> {calculateUpTime()}% operational in last 90 days</p>
                 </div>
 

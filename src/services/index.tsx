@@ -92,7 +92,7 @@ const ServicesSection: NextPage = () => {
                 </aside>
                 <main className='flex-auto w-3/4 pt-5' >
                     <p className="text-xl mb-5">Cogoport Health</p>
-                    <div className="card-body pb-96">
+                    <div className="card-body">
                         {
                             isServicesLoading ? (
                                 <p>Loading...</p>
