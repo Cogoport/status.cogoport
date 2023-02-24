@@ -80,22 +80,14 @@ const ServicesSection: NextPage = () => {
             <div className='flex mt-5 mx-5 md:mx-52'>
                 <aside className='flex-auto w-1/4 flex justify-start pt-5 h-screen sticky top-0'>
                     <ul className="sticky top-0">
-                        <li className={`cursor-pointer ${activeSectionIndex === 0 ? "text-black font-medium" : "text-slate-700"}`}
-                            onClick={() => scrollToSection(0)}>
-                            Cogoport Admin
-                        </li>
-                        <li className={`cursor-pointer ${activeSectionIndex === 1 ? "text-black font-medium" : "text-slate-700"}`}
-                            onClick={() => scrollToSection(1)}>
-                            Cogoport App
-                        </li>
-                        <li className={`cursor-pointer ${activeSectionIndex === 2 ? "text-black font-medium" : "text-slate-700"}`}
-                            onClick={() => scrollToSection(2)}>
-                            Cogoport Public
-                        </li>
-                        <li className={`cursor-pointer ${activeSectionIndex === 3 ? "text-black font-medium" : "text-slate-700"}`}
-                            onClick={() => scrollToSection(3)}>
-                            Cogoport Partner
-                        </li>
+                        {
+                            ["Backend", "Frontend Admin", "Frontend Partner", "Frontend App"].map((item,i) => {
+                                return (<li key={i} className={`cursor-pointer ${activeSectionIndex === i ? "text-black font-medium" : "text-slate-700"}`}
+                                    onClick={() => scrollToSection(i)}>
+                                    {item}
+                                </li>)
+                            })
+                        }
                     </ul>
                 </aside>
                 <main className='flex-auto w-3/4 pt-5' >
@@ -107,7 +99,7 @@ const ServicesSection: NextPage = () => {
                             ) : (
                                 <ul>
                                     {
-                                        (data as Service[]).map((service,i) => (
+                                        (data as Service[]).map((service, i) => (
                                             <li key={service.id} ref={(ref) => (sectionRefs.current[i] = ref)}>
                                                 <ServiceItem item={service} />
                                             </li>
