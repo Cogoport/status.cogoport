@@ -102,6 +102,8 @@ const ServicesSection: NextPage = () => {
                                         (data as Service[]).map((service, i) => (
                                             <li key={service.id} ref={(ref) => (sectionRefs.current[i] = ref)}>
                                                 <ServiceItem item={service} />
+                                                <p className="mt-10 sm:text-lg	text-base font-semibold leading-7 text-gray-900">Recent incident</p>
+                                                <IncidentsSection />
                                             </li>
                                         ))
                                     }
@@ -109,8 +111,6 @@ const ServicesSection: NextPage = () => {
                             )
                         }
                     </div>
-                    <p className="mt-10 sm:text-lg	text-base font-semibold leading-7 text-gray-900">Recent incident</p>
-                    <IncidentsSection />
                 </main>
             </div>
         </div >
