@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: my-branch
+          ref: cogo-status
       - name: Run Shell Script
         id: shell_script_run
         env:
