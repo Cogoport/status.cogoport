@@ -48,7 +48,7 @@ const ServiceItem: FunctionComponent<ServiceItemProps> = ({ item }) => {
             case "frontend_app":
                 return "Frontend App"
             default:
-                return ""
+                return "New URL"
         }
     }
 
