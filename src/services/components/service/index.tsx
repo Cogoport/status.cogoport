@@ -53,16 +53,16 @@ const ServiceItem: FunctionComponent<ServiceItemProps> = ({ item }) => {
     }
 
     return (
-        <div className='mb-10'>
+        <div className=''>
             <div className='flex'>
                 <Icon />
                 <div className="w-full flex justify-between items-baseline">
-                    <p className="ml-4 text-base font-semibold leading-6 text-gray-900">{getName(item.name)}</p>
+                    <p className="ml-4 text-xl font-semibold leading-6 text-gray-900">{getName(item.name)}</p>
                     <p className='text-xs text-gray-400 items-baseline	self-baseline'> {calculateUpTime()}% operational in last 90 days</p>
                 </div>
 
             </div>
-            <div className='flex mt-2'>
+            <div className='flex mt-5 mb-5'>
                 {
                     ((item.logs || []) as LogDaySummary[]).map((log) => (
                         <ServiceLog key={log.date} item={log} />

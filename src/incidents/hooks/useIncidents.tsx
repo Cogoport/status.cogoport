@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Incident from "../types/Incident";
 import MonthlyIncident from "../types/MonthlyIncident";
 
-function useIncidents() {
+function useIncidents(user_and_repo:string) {
     const [data, setData] = useState<MonthlyIncident[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState();
@@ -11,7 +11,15 @@ function useIncidents() {
         const loadData = async () => {
             setIsLoading(true);
             try {
-                const response = await fetch("https://api.github.com/repos/Cogoport/status.cogoport/issues?per_page=20&state=all&labels=incident");
+                
+                const response = await fetch(`https://api.github.com/repos/${user_and_repo}/issues?per_page=2`,
+                {
+                    "method": "GET",
+                    "headers":{
+                        authorization: `Token ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
+                    }
+                }
+                );
                 const issues = await response.json();
                 console.log('issues', issues)
                 const monthlyIncident = devideMonthly(issues.map((issue: any) => ({
@@ -32,7 +40,7 @@ function useIncidents() {
             }
         };
         loadData();
-    }, []);
+    }, [user_and_repo]);
 
     return [data, isLoading, error];
 }

@@ -15,14 +15,15 @@ const ServicesSection: NextPage = () => {
 
     const sectionRefs = useRef<any[]>([]);
 
+
     useEffect(() => {
         const handleScroll = () => {
             const currentPosition = window.scrollY;
             let currentSectionIndex = 0;
 
             sectionRefs.current.forEach((sectionRef, index) => {
-                if (sectionRef) { // check if sectionRef is defined
-                    const sectionTop = sectionRef.offsetTop;
+                if (sectionRef) {
+                    const sectionTop = sectionRef.offsetTop + 60;
                     if (currentPosition >= sectionTop) {
                         currentSectionIndex = index;
                     }
@@ -37,7 +38,7 @@ const ServicesSection: NextPage = () => {
     }, []);
 
     const scrollToSection = (index: any) => {
-        const sectionTop = sectionRefs.current[index].offsetTop;
+        const sectionTop = sectionRefs.current[index].offsetTop + 60;
         window.scrollTo({ top: sectionTop, behavior: "smooth" });
     };
 
@@ -64,7 +65,7 @@ const ServicesSection: NextPage = () => {
     }
 
     return (
-        <div className='mt-10'>
+        <div className='mt-10 mx-5 md:mx-0'>
             <div className="mx-px md:ml-80 md:mr-80 bg-white dark:bg-slate-800 rounded-xl card">
                 <div className="w-full flex justify-between pt-2 pl-6 pr-6 pb-2">
                     <div className='flex items-center sm:text-xl text-xs font-semibold leading-7'>
@@ -77,41 +78,54 @@ const ServicesSection: NextPage = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex mt-5 mx-5 md:mx-52'>
-                <aside className='flex-auto w-1/4 flex justify-start pt-5 h-screen sticky top-0'>
-                    <ul className="sticky top-0">
-                        {
-                            ["Backend", "Frontend Admin", "Frontend Partner", "Frontend App"].map((item,i) => {
-                                return (<li key={i} className={`cursor-pointer ${activeSectionIndex === i ? "text-black font-medium" : "text-slate-700"}`}
-                                    onClick={() => scrollToSection(i)}>
-                                    {item}
-                                </li>)
-                            })
-                        }
-                    </ul>
-                </aside>
-                <main className='flex-auto w-3/4 pt-5' >
-                    <p className="text-xl mb-5">Cogoport Health</p>
-                    <div className="card-body">
-                        {
-                            isServicesLoading ? (
-                                <p>Loading...</p>
-                            ) : (
-                                <ul>
-                                    {
-                                        (data as Service[]).map((service, i) => (
-                                            <li key={service.id} ref={(ref) => (sectionRefs.current[i] = ref)}>
-                                                <ServiceItem item={service} />
-                                                <p className="mt-10 sm:text-lg	text-base font-semibold leading-7 text-gray-900">Recent incident</p>
-                                                <IncidentsSection />
-                                            </li>
-                                        ))
-                                    }
-                                </ul>
-                            )
-                        }
-                    </div>
-                </main>
+            <div className='flex flex-col mt-5 md:mx-52'>
+                <h1 className="text-4xl font-normal leading-normal mb-5">Cogoport Health</h1>
+                <div className='flex'>
+                    <aside className='hidden md:flex flex-auto w-1/4 justify-start pt-5 h-screen sticky top-0'>
+                        <ul className="sticky top-0">
+                            <li className={`cursor-pointer ${(activeSectionIndex === 0 || activeSectionIndex === 1 || activeSectionIndex === 2) ? "text-black font-medium" : "text-slate-700"}`} onClick={() => scrollToSection(0)}>Frontend</li>
+                            <ul className={`ml-2 ${(activeSectionIndex === 0 || activeSectionIndex === 1 || activeSectionIndex === 2) ? "block" : "hidden"}`}>
+                                <li className={`cursor-pointer ${activeSectionIndex === 0 ? "text-black font-medium" : "text-slate-700"}`}
+                                    onClick={() => scrollToSection(0)}>
+                                    Admin
+                                </li>
+                                <li className={`cursor-pointer ${activeSectionIndex === 1 ? "text-black font-medium" : "text-slate-700"}`}
+                                    onClick={() => scrollToSection(1)}>
+                                    Partner
+                                </li>
+                                <li className={`cursor-pointer ${activeSectionIndex === 2 ? "text-black font-medium" : "text-slate-700"}`}
+                                    onClick={() => scrollToSection(2)}>
+                                    App
+                                </li>
+                            </ul>
+                            <li className={`cursor-pointer mb-2 ${activeSectionIndex === 3 ? "text-black font-medium" : "text-slate-700"}`}
+                                onClick={() => scrollToSection(3)}>
+                                Backend
+                            </li>
+                        </ul>
+                    </aside>
+                    <main className='flex-auto w-3/4 pt-5 pb-96' >
+                        <div className="card-body">
+                            {
+                                isServicesLoading ? (
+                                    <p>Loading...</p>
+                                ) : (
+                                    <ul>
+                                        {
+                                            (data as Service[]).map((service, i) => (
+                                                <li className='shadow-md bg-white p-5 mb-5 rounded-lg' key={service.id} ref={(ref) => (sectionRefs.current[i] = ref)}>
+                                                    <ServiceItem item={service} />
+                                                    <p className="sm:text-lg text-base font-semibold leading-7 text-gray-900">Recent incident</p>
+                                                    <IncidentsSection />
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
+                                )
+                            }
+                        </div>
+                    </main>
+                </div>
             </div>
         </div >
     )

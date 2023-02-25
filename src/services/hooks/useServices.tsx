@@ -58,8 +58,6 @@ async function logs(key: string): Promise<LogDaySummary[]> {
         logs.push({ id: created_at, response_time, status, created_at })
     })
 
-    console.log(logs)
-
     const prepareSummary = Object.values(logs.reduce((r: any, date) => {
         const [year, month, day] = date.created_at.substr(0, 10).split('-');
         const key = `${day}_${month}_${year}`;

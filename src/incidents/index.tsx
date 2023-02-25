@@ -4,7 +4,7 @@ import Incidents from './types/Incident';
 import MonthlyIncident from './types/MonthlyIncident';
 
 const IncidentsSection: NextPage = () => {
-    const [monthlyIncidents, isIncidentsLoading] = useIncidents();
+    const [monthlyIncidents, isIncidentsLoading] = useIncidents("saitaruns1/github-actions");
 
     const formatDate = (date: string) => {
         return new Date(date).toLocaleString([], {
@@ -21,8 +21,8 @@ const IncidentsSection: NextPage = () => {
                     <div>
                         {
                             (monthlyIncidents as MonthlyIncident[]).map(incidents => (
-                                <div className='mb-10' key={incidents.month}>
-                                    <p className='mr-5 text-2xl font-semibold leading-6 text-gray-900'>{incidents.month}</p>
+                                <div className='pb-2' key={incidents.month}>
+                                    <p className='mr-5 text-md font-semibold leading-6 text-gray-900'>{incidents.month}</p>
                                     <div className='mt-2 flex-1 h-px  bg-gray-300' />
                                     <div className='ml-6 border-l-4'>
                                         {
