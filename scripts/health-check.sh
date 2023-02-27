@@ -52,23 +52,23 @@ do
   email="shivom.mahar@cogoport.com"
   get_post_data()
   {
-      if [ "$key" = "frontend_admin" ]
-      then
-          mention="Sanagapati Sai Tarun"
-          email="sanagapati.tarun@cogoport.com"
-      elif [ "$key" = "frontend_partner" ]
-      then
-          mention="Shivom Mahar"
-          email="shivom.mahar@cogoport.com"
-      elif [ "$key" = "frontend_app" ]
-      then
-          mention="Vikram Gudda"
-          email="vikram.gudda@cogoport.com"
-      elif [ "$key" = "backend_service" ]
-      then
-          mention="Kanduri Jayanth Sri Ram"
-          email="kanduri.ram@cogoport.com"
-      fi
+      # if [ "$key" = "frontend_admin" ]
+      # then
+      #     mention="Sanagapati Sai Tarun"
+      #     email="sanagapati.tarun@cogoport.com"
+      # elif [ "$key" = "frontend_partner" ]
+      # then
+      #     mention="Shivom Mahar"
+      #     email="shivom.mahar@cogoport.com"
+      # elif [ "$key" = "frontend_app" ]
+      # then
+      #     mention="Vikram Gudda"
+      #     email="vikram.gudda@cogoport.com"
+      # elif [ "$key" = "backend_service" ]
+      # then
+      #     mention="Kanduri Jayanth Sri Ram"
+      #     email="kanduri.ram@cogoport.com"
+      # fi
       echo '{
           "type": "message",
           "attachments": [
@@ -108,7 +108,7 @@ do
           ]
       }'
   }
-  if [ "$result" = "success" ]
+  if [ "$result" = "failed" ]
   then
     curl -H 'Content-Type: application/json' -d "$(get_post_data)" $TEAMS_WEBHOOK_URL &> /dev/null
   fi
