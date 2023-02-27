@@ -48,50 +48,69 @@ do
   dateTime=$(date +'%Y-%m-%d %H:%M')
   
   # Notify on teams channel
+  mention="Shivom Mahar"
+  email="shivom.mahar@cogoport.com"
   get_post_data()
   {
+      if [ "$key" = "frontend_admin" ]
+      then
+          mention="Sanagapati Sai Tarun"
+          email="sanagapati.tarun@cogoport.com"
+      elif [ "$key" = "frontend_partner" ]
+      then
+          mention="Shivom Mahar"
+          email="shivom.mahar@cogoport.com"
+      elif [ "$key" = "frontend_app" ]
+      then
+          mention="Vikram Gudda"
+          email="vikram.gudda@cogoport.com"
+      elif [ "$key" = "backend_service" ]
+      then
+          mention="Kanduri Jayanth Sri Ram"
+          email="kanduri.ram@cogoport.com"
+      fi
       echo '{
-      "type": "message",
-      "attachments": [
-          {
-              "contentType": "application/vnd.microsoft.card.adaptive",
-              "content": {
-                  "type": "AdaptiveCard",
-                  "body": [
-                      {
-                          "type": "TextBlock",
-                          "size": "Medium",
-                          "weight": "Bolder",
-                          "text": "Issue Message"
-                      },
-                      {
-                          "type": "TextBlock",
-                          "text": "[Cogoport Admin] Hi, <at>'$1'</at>. Theres is an issue in Cogoport admin"
-                      }
-                  ],
-                  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-                  "version": "1.0",
-                  "msteams": {
-                      "width": "Full",
-                      "entities": [
+          "type": "message",
+          "attachments": [
+              {
+                  "contentType": "application/vnd.microsoft.card.adaptive",
+                  "content": {
+                      "type": "AdaptiveCard",
+                      "body": [
                           {
-                              "type": "mention",
-                              "text": "<at>'$1'</at>",
-                              "mentioned": {
-                                  "id": "'$2'",
-                                  "name": "'$1'"
-                              }
+                              "type": "TextBlock",
+                              "size": "Medium",
+                              "weight": "Bolder",
+                              "text": "Issue Message"
+                          },
+                          {
+                              "type": "TextBlock",
+                              "text": "[Cogoport '$key'] Hi, '$mention' <at>'$mention'</at>. Theres is an issue in Cogoport '$key'"
                           }
-                      ]
+                      ],
+                      "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                      "version": "1.0",
+                      "msteams": {
+                          "width": "Full",
+                          "entities": [
+                              {
+                                  "type": "mention",
+                                  "text": "<at>'$mention'</at>",
+                                  "mentioned": {
+                                      "id": "'$email'",
+                                      "name": "'$mention'"
+                                  }
+                              }
+                          ]
+                      }
                   }
               }
-          }
-      ]
-  }'
+          ]
+      }'
   }
-  if [ "$result" = "failed" ]
+  if [ "$result" = "success" ]
   then
-    curl -H 'Content-Type: application/json' -d "$(get_post_data "Shivom Mahar" shivom.mahar@cogoport.com)" $TEAMS_WEBHOOK_URL &> /dev/null
+    curl -H 'Content-Type: application/json' -d "$(get_post_data)" $TEAMS_WEBHOOK_URL &> /dev/null
   fi
 
  # Commit to repository
