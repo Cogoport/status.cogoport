@@ -7,6 +7,7 @@ export default function Document() {
             <body className="dark:bg-gray-800">
                 <Main />
                 <NextScript />
+                <script src="https://cdn.tailwindcss.com"></script>
             </body>
         </Html>
     )
