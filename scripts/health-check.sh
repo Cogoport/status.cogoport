@@ -95,7 +95,7 @@ do
                           },
                           {
                               "type": "TextBlock",
-                              "text": "Hi, <at>'$mention'</at>. '$service' service is Down 😨"
+                              "text": "Hi, <at>'$mention'</at>. '$service' service is Down '$emoji'"
                           }
                       ],
                       "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
