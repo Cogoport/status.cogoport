@@ -48,9 +48,50 @@ do
   dateTime=$(date +'%Y-%m-%d %H:%M')
   
   # Notify on teams channel
+  get_post_data()
+  {
+      echo '{
+      "type": "message",
+      "attachments": [
+          {
+              "contentType": "application/vnd.microsoft.card.adaptive",
+              "content": {
+                  "type": "AdaptiveCard",
+                  "body": [
+                      {
+                          "type": "TextBlock",
+                          "size": "Medium",
+                          "weight": "Bolder",
+                          "text": "Issue Message"
+                      },
+                      {
+                          "type": "TextBlock",
+                          "text": "[Cogoport Admin] Hi, <at>'$1'</at>. Theres is an issue in Cogoport admin"
+                      }
+                  ],
+                  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                  "version": "1.0",
+                  "msteams": {
+                      "width": "Full",
+                      "entities": [
+                          {
+                              "type": "mention",
+                              "text": "<at>'$1'</at>",
+                              "mentioned": {
+                                  "id": "'$2'",
+                                  "name": "'$1'"
+                              }
+                          }
+                      ]
+                  }
+              }
+          }
+      ]
+  }'
+  }
   if [ "$result" = "failed" ]
   then
-    curl -H 'Content-Type: application/json' -d '{"text": '"\"${key} service is down\""'}' $TEAMS_WEBHOOK_URL &> /dev/null
+    curl -H 'Content-Type: application/json' -d "$(get_post_data "Shivom Mahar" shivom.mahar@cogoport.com)" $TEAMS_WEBHOOK_URL &> /dev/null
   fi
 
  # Commit to repository
