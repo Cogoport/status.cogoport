@@ -1,6 +1,6 @@
 export const Status = {
-    OPERATIONAL: "operational",
-    PARTIAL_OUTAGE: "partial_outage",
-    OUTAGE: "outage",
-    UNKNOWN: "unknown"
+    OPERATIONAL: "Operational",
+    PARTIAL_OUTAGE: "Partial Outage",
+    OUTAGE: "Outage",
+    UNKNOWN: "Unknown"
 }
