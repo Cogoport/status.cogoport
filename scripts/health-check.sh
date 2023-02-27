@@ -48,8 +48,8 @@ do
   dateTime=$(date +'%Y-%m-%d %H:%M')
   
   # Notify on teams channel
-  mention="Shivom Mahar"
-  email="shivom.mahar@cogoport.com"
+  mention="Prashant Paddune"
+  email="prashant.paddune@cogoport.com"
   get_post_data()
   {
       # if [ "$key" = "frontend_admin" ]
@@ -85,7 +85,7 @@ do
                           },
                           {
                               "type": "TextBlock",
-                              "text": "[Cogoport '$key'] Hi, '$mention' <at>'$mention'</at>. Theres is an issue in Cogoport '$key'"
+                              "text": "[Cogoport '$key'] Hi, '$mention' <at>'$mention'</at>. Theres is an issue"
                           }
                       ],
                       "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
@@ -108,7 +108,7 @@ do
           ]
       }'
   }
-  if [ "$result" = "failed" ]
+  if [ "$result" = "success" ]
   then
     curl -H 'Content-Type: application/json' -d "$(get_post_data)" $TEAMS_WEBHOOK_URL &> /dev/null
   fi
