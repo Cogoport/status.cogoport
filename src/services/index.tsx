@@ -64,6 +64,21 @@ const ServicesSection: NextPage = () => {
         }
     }
 
+    const getGithubRepo = (name: string) => {
+        switch (name) {
+            case "backend_service":
+                return "Cogoport/cogoport-back"
+            case "frontend_admin":
+                return "Cogoport/cogo-admin"
+            case "frontend_partner":
+                return "Cogoport/cogo-partner"
+            case "frontend_app":
+                return "Cogoport/cogo-app"
+            default:
+                return "Cogoport/cogo-app"
+        }
+    }
+
     return (
         <div className='mt-10 mx-5 md:mx-0'>
             <div className="mx-px md:ml-80 md:mr-80 bg-white dark:bg-slate-800 rounded-xl card">
@@ -78,32 +93,28 @@ const ServicesSection: NextPage = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex flex-col mt-5 md:mx-52'>
-                <h1 className="text-4xl font-normal leading-normal mb-5">Cogoport Health</h1>
+            <div className='flex flex-col mt-5 md:mx-64'>
+                <h1 className="text-4xl mx-auto font-normal leading-normal mb-5">Cogoport Health</h1>
                 <div className='flex'>
-                    <aside className='hidden md:flex flex-auto w-1/4 justify-start pt-5 h-screen sticky top-0'>
-                        <ul className="sticky top-0">
-                            <li className={`cursor-pointer ${(activeSectionIndex === 0 || activeSectionIndex === 1 || activeSectionIndex === 2) ? "text-black font-medium" : "text-slate-700"}`} onClick={() => scrollToSection(0)}>Frontend</li>
-                            <ul className={`ml-2 ${(activeSectionIndex === 0 || activeSectionIndex === 1 || activeSectionIndex === 2) ? "block" : "hidden"}`}>
-                                <li className={`cursor-pointer ${activeSectionIndex === 0 ? "text-black font-medium" : "text-slate-700"}`}
-                                    onClick={() => scrollToSection(0)}>
-                                    Admin
-                                </li>
-                                <li className={`cursor-pointer ${activeSectionIndex === 1 ? "text-black font-medium" : "text-slate-700"}`}
-                                    onClick={() => scrollToSection(1)}>
-                                    Partner
-                                </li>
-                                <li className={`cursor-pointer ${activeSectionIndex === 2 ? "text-black font-medium" : "text-slate-700"}`}
-                                    onClick={() => scrollToSection(2)}>
-                                    App
-                                </li>
+                    {/* <aside className='hidden md:flex flex-auto w-1/4 justify-start pt-5 h-screen sticky top-0'>
+                        <ul className="sticky top-0 w-full">
+                            <li className={`cursor-pointer text-xl ${(activeSectionIndex === 0 || activeSectionIndex === 1 || activeSectionIndex === 2) ? "text-black font-medium" : "text-slate-700"}`} onClick={() => scrollToSection(0)}>Frontend</li>
+                            <ul className={`ml-5 ${(activeSectionIndex === 0 || activeSectionIndex === 1 || activeSectionIndex === 2) ? "block" : "hidden"}`}>
+                                {["Admin", "Partner", "App"].map((item,i) => {
+                                    return (<li key={i} className={`cursor-pointer text-lg flex items-center ${activeSectionIndex === i ? "text-black font-medium" : "text-slate-700"}`}
+                                        onClick={() => scrollToSection(i)}>
+                                        <svg width="3" height="24" viewBox="0 -9 3 24" className="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500"><path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"></path></svg>
+                                        {item}
+                                    </li>)
+                                })
+                                }
                             </ul>
-                            <li className={`cursor-pointer mb-2 ${activeSectionIndex === 3 ? "text-black font-medium" : "text-slate-700"}`}
+                            <li className={`cursor-pointer text-xl mb-2 ${activeSectionIndex === 3 ? "text-black font-medium" : "text-slate-700"}`}
                                 onClick={() => scrollToSection(3)}>
                                 Backend
                             </li>
                         </ul>
-                    </aside>
+                    </aside> */}
                     <main className='flex-auto w-3/4 pt-5 pb-96' >
                         <div className="card-body">
                             {
@@ -115,8 +126,8 @@ const ServicesSection: NextPage = () => {
                                             (data as Service[]).map((service, i) => (
                                                 <li className='shadow-md bg-white p-5 mb-5 rounded-lg' key={service.id} ref={(ref) => (sectionRefs.current[i] = ref)}>
                                                     <ServiceItem item={service} />
-                                                    <p className="sm:text-lg text-base font-semibold leading-7 text-gray-900">Recent incident</p>
-                                                    <IncidentsSection />
+                                                    {/* <p className="sm:text-lg text-base font-semibold leading-7 text-gray-900">Recent incidents</p> */}
+                                                    {/* <IncidentsSection user_and_repo={getGithubRepo(service.name)} /> */}
                                                 </li>
                                             ))
                                         }

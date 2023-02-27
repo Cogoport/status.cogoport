@@ -3,8 +3,8 @@ import type { NextPage } from 'next'
 import Incidents from './types/Incident';
 import MonthlyIncident from './types/MonthlyIncident';
 
-const IncidentsSection: NextPage = () => {
-    const [monthlyIncidents, isIncidentsLoading] = useIncidents("saitaruns1/github-actions");
+const IncidentsSection = ({user_and_repo}:{user_and_repo:string}) => {
+    const [monthlyIncidents, isIncidentsLoading] = useIncidents(user_and_repo);
 
     const formatDate = (date: string) => {
         return new Date(date).toLocaleString([], {
