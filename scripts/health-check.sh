@@ -89,7 +89,7 @@ do
       ]
   }'
   }
-  if [ "$result" = "success" ]
+  if [ "$result" = "failed" ]
   then
     curl -H 'Content-Type: application/json' -d "$(get_post_data "Shivom Mahar" shivom.mahar@cogoport.com)" $TEAMS_WEBHOOK_URL &> /dev/null
   fi
