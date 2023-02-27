@@ -50,25 +50,30 @@ do
   # Notify on teams channel
   mention="Prashant Paddune"
   email="prashant.paddune@cogoport.com"
+  service="Admin"
   get_post_data()
   {
-      # if [ "$key" = "frontend_admin" ]
-      # then
-      #     mention="Sanagapati Sai Tarun"
-      #     email="sanagapati.tarun@cogoport.com"
-      # elif [ "$key" = "frontend_partner" ]
-      # then
-      #     mention="Shivom Mahar"
-      #     email="shivom.mahar@cogoport.com"
-      # elif [ "$key" = "frontend_app" ]
-      # then
-      #     mention="Vikram Gudda"
-      #     email="vikram.gudda@cogoport.com"
-      # elif [ "$key" = "backend_service" ]
-      # then
-      #     mention="Kanduri Jayanth Sri Ram"
-      #     email="kanduri.ram@cogoport.com"
-      # fi
+      if [ "$key" = "frontend_admin" ]
+      then
+          # mention="Sanagapati Sai Tarun"
+          # email="sanagapati.tarun@cogoport.com"
+          service="Admin"
+      elif [ "$key" = "frontend_partner" ]
+      then
+          # mention="Shivom Mahar"
+          # email="shivom.mahar@cogoport.com"
+          service="Partner"
+      elif [ "$key" = "frontend_app" ]
+      then
+          # mention="Vikram Gudda"
+          # email="vikram.gudda@cogoport.com"
+          service="App"
+      elif [ "$key" = "backend_service" ]
+      then
+          # mention="Kanduri Jayanth Sri Ram"
+          # email="kanduri.ram@cogoport.com"
+          service="Backend"
+      fi
       echo '{
           "type": "message",
           "attachments": [
@@ -85,7 +90,7 @@ do
                           },
                           {
                               "type": "TextBlock",
-                              "text": "[Cogoport '$key'] Hi, '$mention' <at>'$mention'</at>. Theres is an issue"
+                              "text": "Hi, <at>'$mention'</at>. '$service' service is Down "
                           }
                       ],
                       "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
