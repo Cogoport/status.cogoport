@@ -50,7 +50,7 @@ do
   # Notify on teams channel
   mention="Prashant Paddune"
   email="prashant.paddune@cogoport.com"
-  service="Admin"
+  service="Admin Frontend"
   emoji="😨"
   get_post_data()
   {
@@ -58,25 +58,25 @@ do
       then
           # mention="Sanagapati Sai Tarun"
           # email="sanagapati.tarun@cogoport.com"
-          service="Admin"
+          service="Admin Frontend"
           emoji="😨"
       elif [ "$key" = "frontend_partner" ]
       then
           # mention="Shivom Mahar"
           # email="shivom.mahar@cogoport.com"
-          service="Partner"
+          service="Partner Frontend"
           emoji="😱"
       elif [ "$key" = "frontend_app" ]
       then
           # mention="Vikram Gudda"
           # email="vikram.gudda@cogoport.com"
-          service="App"
+          service="App Frontend"
           emoji="😭"
       elif [ "$key" = "backend_service" ]
       then
           # mention="Kanduri Jayanth Sri Ram"
           # email="kanduri.ram@cogoport.com"
-          service="Backend"
+          service="Backend Service"
           emoji="🤦‍♂️"
       fi
       echo '{
@@ -91,11 +91,11 @@ do
                               "type": "TextBlock",
                               "size": "Medium",
                               "weight": "Bolder",
-                              "text": "Issue Message"
+                              "text": "Status"
                           },
                           {
                               "type": "TextBlock",
-                              "text": "Hi, <at>'$mention'</at>. '$service' service is down '$emoji'!!"
+                              "text": "Hi, <at>'$mention'</at>. '$service' is down '$emoji'!!"
                           }
                       ],
                       "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
