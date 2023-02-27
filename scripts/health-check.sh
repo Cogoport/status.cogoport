@@ -51,6 +51,7 @@ do
   mention="Prashant Paddune"
   email="prashant.paddune@cogoport.com"
   service="Admin"
+  emoji="😨"
   get_post_data()
   {
       if [ "$key" = "frontend_admin" ]
@@ -58,21 +59,25 @@ do
           # mention="Sanagapati Sai Tarun"
           # email="sanagapati.tarun@cogoport.com"
           service="Admin"
+          emoji="😨"
       elif [ "$key" = "frontend_partner" ]
       then
           # mention="Shivom Mahar"
           # email="shivom.mahar@cogoport.com"
           service="Partner"
+          emoji="😱"
       elif [ "$key" = "frontend_app" ]
       then
           # mention="Vikram Gudda"
           # email="vikram.gudda@cogoport.com"
           service="App"
+          emoji="😭"
       elif [ "$key" = "backend_service" ]
       then
           # mention="Kanduri Jayanth Sri Ram"
           # email="kanduri.ram@cogoport.com"
           service="Backend"
+          emoji="🤦‍♂️"
       fi
       echo '{
           "type": "message",
@@ -90,7 +95,7 @@ do
                           },
                           {
                               "type": "TextBlock",
-                              "text": "Hi, <at>'$mention'</at>. '$service' service is Down "
+                              "text": "Hi, <at>'$mention'</at>. '$service' service is Down 😨"
                           }
                       ],
                       "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
