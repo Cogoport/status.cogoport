@@ -1,5 +1,5 @@
 ## Cogoport Status
-### Fettle 💟 
+### Powered by Fettle 💟 
 
 **Fettle** is the open-source status page, powered entirely by GitHub Actions, Issues, and Pages.
 
@@ -9,10 +9,10 @@
     - GitHub Pages is used for hosting the status page.
 
 - Monitoring
-    - Github Workflow will be triggered every 1 Hr (Configurable) to visit the website.
+    - Github Workflow will be triggered every 15min (Configurable) to visit the website.
     - Response status and response time is commited to github repository.
 
-- Incidents
+- Incidents ( Coming soon )
     - Github issue is used for incident management.
 
 # Contributing
