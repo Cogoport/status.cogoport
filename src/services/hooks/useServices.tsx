@@ -46,7 +46,15 @@ function useServices() {
 }
 
 async function logs(key: string): Promise<LogDaySummary[]> {
-    const response = await fetch(`https://raw.githubusercontent.com/Cogoport/status.cogoport/cogo-status/public/status/${key}_report.log`);
+    const response = await fetch(`https://raw.githubusercontent.com/saitaruns1/github-actions/main/public/status/${key}_report.log`,
+        {
+            method: "GET",
+            mode: "no-cors",
+            headers: {
+                "Authorization": `token ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`
+            }
+        }
+        );
 
     const text = await response.text();
     const lines = text.split("\n");
