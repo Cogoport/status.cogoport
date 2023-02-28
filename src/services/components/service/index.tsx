@@ -47,6 +47,10 @@ const ServiceItem: FunctionComponent<ServiceItemProps> = ({ item }) => {
                 return "Frontend Partner"
             case "frontend_app":
                 return "Frontend App"
+            case "frontend_public":
+                return "Frontend Public"
+            case "frontend_cms":
+                return "Frontend CMS"
             default:
                 return "New URL"
         }
