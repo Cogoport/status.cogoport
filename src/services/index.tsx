@@ -126,8 +126,8 @@ const ServicesSection: NextPage = () => {
                                             (data as Service[]).map((service, i) => (
                                                 <li className='shadow-md bg-white p-5 mb-5 rounded-lg' key={service.id} ref={(ref) => (sectionRefs.current[i] = ref)}>
                                                     <ServiceItem item={service} />
-                                                    {/* <p className="sm:text-lg text-base font-semibold leading-7 text-gray-900">Recent incidents</p> */}
-                                                    {/* <IncidentsSection user_and_repo={getGithubRepo(service.name)} /> */}
+                                                    {/* <p className="sm:text-lg text-base font-semibold leading-7 text-gray-900">Recent incidents</p>
+                                                    <IncidentsSection user_and_repo={"saitaruns1/github-actions"} /> */}
                                                 </li>
                                             ))
                                         }
