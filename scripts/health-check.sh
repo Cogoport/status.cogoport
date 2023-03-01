@@ -29,7 +29,7 @@ do
   url="${URLSARRAY[index]}"
   echo "  $key=$url"
 
-  for i in 1 2 3 4; 
+  for i in 1 2 3; 
   do
     response=$(curl -o /dev/null -s -w '%{http_code} %{time_total}' --silent --output /dev/null $url)
     http_code=$(echo $response | cut -d ' ' -f 1)
@@ -78,6 +78,18 @@ do
           # email="kanduri.ram@cogoport.com"
           service="Backend Service"
           emoji="🤦‍♂️"
+      elif [ "$key" = "frontend_public" ]
+      then
+          # mention="Kanduri Jayanth Sri Ram"
+          # email="kanduri.ram@cogoport.com"
+          service="Frontend Public"
+          emoji="😕"
+      elif [ "$key" = "frontend_cms" ]
+      then
+          # mention="Kanduri Jayanth Sri Ram"
+          # email="kanduri.ram@cogoport.com"
+          service="Frontend CMS"
+          emoji="🙊"
       fi
       echo '{
           "type": "message",
