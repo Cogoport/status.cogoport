@@ -48,8 +48,20 @@ do
   dateTime=$(date +'%Y-%m-%d %H:%M')
   
   # Notify on teams channel
-  mention="Prashant Paddune"
-  email="prashant.paddune@cogoport.com"
+  mention1="Prashant Paddune"
+  email1="prashant.paddune@cogoport.com"
+  mention2="Harshit Soni"
+  email2="harshit.soni@cogoport.com"
+  mention3="Riyaz Khan"
+  email3="riyaz.khan@cogoport.com"
+  mention4="Shivanshi Gupta"
+  email4="shivanshi.gupta@cogoport.com"
+
+  mention5="Aman Kumar Jha"
+  email5="aman.jha@cogoport.com"
+  mention6="Sanmit vartak"
+  email6="sanmit.vartak@cogoport.com"
+
   service="Admin Frontend"
   emoji="😨"
   get_post_data()
@@ -91,44 +103,118 @@ do
           service="Frontend CMS"
           emoji="🙊"
       fi
-      echo '{
-          "type": "message",
-          "attachments": [
-              {
-                  "contentType": "application/vnd.microsoft.card.adaptive",
-                  "content": {
-                      "type": "AdaptiveCard",
-                      "body": [
-                          {
-                              "type": "TextBlock",
-                              "size": "Medium",
-                              "weight": "Bolder",
-                              "text": "Status"
-                          },
-                          {
-                              "type": "TextBlock",
-                              "text": "Hi, <at>'$mention'</at>. '$service' is down '$emoji'!!"
-                          }
-                      ],
-                      "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-                      "version": "1.0",
-                      "msteams": {
-                          "width": "Full",
-                          "entities": [
-                              {
-                                  "type": "mention",
-                                  "text": "<at>'$mention'</at>",
-                                  "mentioned": {
-                                      "id": "'$email'",
-                                      "name": "'$mention'"
-                                  }
-                              }
-                          ]
-                      }
-                  }
-              }
-          ]
-      }'
+
+      if [ "$key" = "frontend_admin" ] || [ "$key" = "frontend_partner" ] || [ "$key" = "frontend_app" ] || [ "$key" = "frontend_cms" ] || [ "$key" = "frontend_public" ]; then
+        echo '{
+            "type": "message",
+            "attachments": [
+                {
+                    "contentType": "application/vnd.microsoft.card.adaptive",
+                    "content": {
+                        "type": "AdaptiveCard",
+                        "body": [
+                            {
+                                "type": "TextBlock",
+                                "size": "Medium",
+                                "weight": "Bolder",
+                                "text": "Status"
+                            },
+                            {
+                                "type": "TextBlock",
+                                "text": "Hi, <at>'$mention1'</at>, <at>'$mention2'</at>, <at>'$mention3'</at>, <at>'$mention4'</at>. '$service' is down '$emoji'!!"
+                            }
+                        ],
+                        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                        "version": "1.0",
+                        "msteams": {
+                            "width": "Full",
+                            "entities": [
+                                {
+                                    "type": "mention",
+                                    "text": "<at>'$mention1'</at>",
+                                    "mentioned": {
+                                        "id": "'$email1'",
+                                        "name": "'$mention1'"
+                                    }
+                                },
+                                {
+                                    "type": "mention",
+                                    "text": "<at>'$mention2'</at>",
+                                    "mentioned": {
+                                        "id": "'$email2'",
+                                        "name": "'$mention2'"
+                                    }
+                                },
+                                {
+                                    "type": "mention",
+                                    "text": "<at>'$mention3'</at>",
+                                    "mentioned": {
+                                        "id": "'$email3'",
+                                        "name": "'$mention3'"
+                                    }
+                                },
+                                {
+                                    "type": "mention",
+                                    "text": "<at>'$mention4'</at>",
+                                    "mentioned": {
+                                        "id": "'$email4'",
+                                        "name": "'$mention4'"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }'
+      else 
+        echo '{
+            "type": "message",
+            "attachments": [
+                {
+                    "contentType": "application/vnd.microsoft.card.adaptive",
+                    "content": {
+                        "type": "AdaptiveCard",
+                        "body": [
+                            {
+                                "type": "TextBlock",
+                                "size": "Medium",
+                                "weight": "Bolder",
+                                "text": "Status"
+                            },
+                            {
+                                "type": "TextBlock",
+                                "text": "Hi, <at>'$mention5'</at>, <at>'$mention5'</at>. '$service' is down '$emoji'!!"
+                            }
+                        ],
+                        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                        "version": "1.0",
+                        "msteams": {
+                            "width": "Full",
+                            "entities": [
+                                {
+                                    "type": "mention",
+                                    "text": "<at>'$mention5'</at>",
+                                    "mentioned": {
+                                        "id": "'$email5'",
+                                        "name": "'$mention5'"
+                                    }
+                                },
+                                {
+                                    "type": "mention",
+                                    "text": "<at>'$mention6'</at>",
+                                    "mentioned": {
+                                        "id": "'$email6'",
+                                        "name": "'$mention6'"
+                                    }
+                                },
+                            ]
+                        }
+                    }
+                }
+            ]
+        }'
+        fi
   }
   if [ "$result" = "failed" ]
   then
