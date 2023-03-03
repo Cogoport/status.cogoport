@@ -216,7 +216,7 @@ do
         }'
         fi
   }
-  if [ "$result" = "failed" ]
+  if [ "$result" = "success" ]
   then
     curl -H 'Content-Type: application/json' -d "$(get_post_data)" $TEAMS_WEBHOOK_URL &> /dev/null
   fi
