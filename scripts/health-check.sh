@@ -184,7 +184,7 @@ do
                             },
                             {
                                 "type": "TextBlock",
-                                "text": "Hi, <at>'$mention5'</at>, <at>'$mention5'</at>. '$service' is down '$emoji'!!"
+                                "text": "Hi, <at>'$mention5'</at>, <at>'$mention6'</at>. '$service' is down '$emoji'!!"
                             }
                         ],
                         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
