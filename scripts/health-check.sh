@@ -48,19 +48,21 @@ do
   dateTime=$(date +'%Y-%m-%d %H:%M')
   
   # Notify on teams channel
-  mention1="Prashant Paddune"
-  email1="prashant.paddune@cogoport.com"
-  mention2="Harshit Soni"
-  email2="harshit.soni@cogoport.com"
-  mention3="Riyaz Khan"
-  email3="riyaz.khan@cogoport.com"
-  mention4="Shivanshi Gupta"
-  email4="shivanshi.gupta@cogoport.com"
+  mention1="Rudraprasad Das"
+  email1="rudra@cogoport.com"
+  mention2="Prashant Paddune"
+  email2="prashant.paddune@cogoport.com"
+  mention3="Harshit Soni"
+  email3="harshit.soni@cogoport.com"
+  mention4="Riyaz Khan"
+  email4="riyaz.khan@cogoport.com"
+  mention5="Shivanshi Gupta"
+  email5="shivanshi.gupta@cogoport.com"
 
-  mention5="Aman Kumar Jha"
-  email5="aman.jha@cogoport.com"
-  mention6="Sanmit vartak"
-  email6="sanmit.vartak@cogoport.com"
+  mention6="Aman Kumar Jha"
+  email6="aman.jha@cogoport.com"
+  mention7="Sanmit vartak"
+  email7="sanmit.vartak@cogoport.com"
 
   service="Admin Frontend"
   emoji="😨"
@@ -68,38 +70,26 @@ do
   {
       if [ "$key" = "frontend_admin" ]
       then
-          # mention="Sanagapati Sai Tarun"
-          # email="sanagapati.tarun@cogoport.com"
           service="Admin Frontend"
           emoji="😨"
       elif [ "$key" = "frontend_partner" ]
       then
-          # mention="Shivom Mahar"
-          # email="shivom.mahar@cogoport.com"
           service="Partner Frontend"
           emoji="😱"
       elif [ "$key" = "frontend_app" ]
       then
-          # mention="Vikram Gudda"
-          # email="vikram.gudda@cogoport.com"
           service="App Frontend"
           emoji="😭"
       elif [ "$key" = "backend_service" ]
       then
-          # mention="Kanduri Jayanth Sri Ram"
-          # email="kanduri.ram@cogoport.com"
           service="Backend Service"
           emoji="🤦‍♂️"
       elif [ "$key" = "frontend_public" ]
       then
-          # mention="Kanduri Jayanth Sri Ram"
-          # email="kanduri.ram@cogoport.com"
           service="Frontend Public"
           emoji="😕"
       elif [ "$key" = "frontend_cms" ]
       then
-          # mention="Kanduri Jayanth Sri Ram"
-          # email="kanduri.ram@cogoport.com"
           service="Frontend CMS"
           emoji="🙊"
       fi
@@ -121,7 +111,7 @@ do
                             },
                             {
                                 "type": "TextBlock",
-                                "text": "Hi, <at>'$mention1'</at>, <at>'$mention2'</at>, <at>'$mention3'</at>, <at>'$mention4'</at>."
+                                "text": "Hi, <at>'$mention1'</at>, <at>'$mention2'</at>, <at>'$mention3'</at>, <at>'$mention4'</at>, <at>'$mention5'</at>."
                             },
                             {
                                 "type": "TextBlock",
@@ -164,6 +154,14 @@ do
                                         "id": "'$email4'",
                                         "name": "'$mention4'"
                                     }
+                                },
+                                {
+                                    "type": "mention",
+                                    "text": "<at>'$mention5'</at>",
+                                    "mentioned": {
+                                        "id": "'$email5'",
+                                        "name": "'$mention5'"
+                                    }
                                 }
                             ]
                         }
@@ -188,7 +186,7 @@ do
                             },
                             {
                                 "type": "TextBlock",
-                                "text": "Hi, <at>'$mention5'</at>, <at>'$mention6'</at>."
+                                "text": "Hi, <at>'$mention6'</at>, <at>'$mention7'</at>."
                             },
                             {
                                 "type": "TextBlock",
@@ -202,18 +200,18 @@ do
                             "entities": [
                                 {
                                     "type": "mention",
-                                    "text": "<at>'$mention5'</at>",
-                                    "mentioned": {
-                                        "id": "'$email5'",
-                                        "name": "'$mention5'"
-                                    }
-                                },
-                                {
-                                    "type": "mention",
                                     "text": "<at>'$mention6'</at>",
                                     "mentioned": {
                                         "id": "'$email6'",
                                         "name": "'$mention6'"
+                                    }
+                                },
+                                {
+                                    "type": "mention",
+                                    "text": "<at>'$mention7'</at>",
+                                    "mentioned": {
+                                        "id": "'$email7'",
+                                        "name": "'$mention7'"
                                     }
                                 },
                             ]
